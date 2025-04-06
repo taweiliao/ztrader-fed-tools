@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ztrader Fed Tools</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: #00FF66;
+      display: flex;
+      height: 100vh;
+    }
+    #sidebar {
+      width: 250px;
+      background-color: #111;
+      padding: 20px;
+      box-sizing: border-box;
+      border-right: 1px solid #00FF66;
+    }
+    #sidebar h2 {
+      color: #00FF66;
+      font-size: 20px;
+      margin-bottom: 30px;
+    }
+    .tablink {
+      display: block;
+      color: #00FF66;
+      background-color: #111;
+      padding: 10px 15px;
+      border: none;
+      text-align: left;
+      cursor: pointer;
+      margin-bottom: 10px;
+      width: 100%;
+    }
+    .tablink:hover {
+      background-color: #222;
+    }
+    #main {
+      flex: 1;
+      padding: 20px;
+      box-sizing: border-box;
+      overflow-y: auto;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+      }
+      #sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #00FF66;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="sidebar">
+    <h2>Ztrader.ai</h2>
+    <button class="tablink" onclick="openTab('fed')">🧭 Fed Monitor</button>
+    <button class="tablink" onclick="openTab('options')">📊 Options 模擬器</button>
+    <button class="tablink" onclick="openTab('summary')">🧠 GPT 摘要模塊</button>
+  </div>
+  <div id="main">
+    <iframe id="contentFrame" src="fed.html"></iframe>
+  </div>
+
+  <script>
+    function openTab(tab) {
+      const map = {
+        fed: "fed.html",
+        options: "options.html",
+        summary: "summary.html"
+      };
+      document.getElementById('contentFrame').src = map[tab];
+    }
+  </script>
+</body>
+</html>
